@@ -58,16 +58,19 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Contact form submission
-const contactForm = document.querySelector('.contact-form form');
+// Contact form submission with EmailJS
+const contactForm = document.querySelector('#contactForm');
 if (contactForm) {
+    // Initialize EmailJS
+    emailjs.init("sV_OiaLfQvRY-7vPS");
+    
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
         // Get form data
-        const name = contactForm.querySelector('input[type="text"]').value;
-        const email = contactForm.querySelector('input[type="email"]').value;
-        const message = contactForm.querySelector('textarea').value;
+        const name = contactForm.querySelector('#user_name').value;
+        const email = contactForm.querySelector('#user_email').value;
+        const message = contactForm.querySelector('#message').value;
         
         // Simple validation
         if (!name || !email || !message) {
@@ -75,18 +78,49 @@ if (contactForm) {
             return;
         }
         
-        // Simulate form submission
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            showNotification('Please enter a valid email address', 'error');
+            return;
+        }
+        
+        // Show loading state
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
         submitBtn.disabled = true;
         
-        setTimeout(() => {
-            showNotification('Thank you for your message! We will get back to you soon.', 'success');
-            contactForm.reset();
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-        }, 2000);
+        // Prepare template parameters
+        const templateParams = {
+            user_name: name,
+            user_email: email,
+            message: message,
+            timestamp: new Date().toLocaleString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                timeZoneName: 'short'
+            }),
+            to_email: 'tcc@trinity.edu.np' // Your email address
+        };
+        
+        // Send email using EmailJS
+        emailjs.send('service_ycssz5q', 'template_k86z0v9', templateParams)
+            .then((response) => {
+                showNotification('Thank you for your message! We will get back to you soon.', 'success');
+                contactForm.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            })
+            .catch((error) => {
+                showNotification('Sorry, there was an error sending your message. Please try again.', 'error');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                console.error('EmailJS Error:', error);
+            });
     });
 }
 
