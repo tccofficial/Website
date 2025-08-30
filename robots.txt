@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://tccofficial.vercel.app/sitemap.xml
+
+# Allow all important pages
+Allow: /index.html
+Allow: /magazines.html
+Allow: /members.html
+Allow: /styles.css
+Allow: /script.js
+
+# Allow all images and assets
+Allow: /img/
+Allow: /img/logo.png
+Allow: /img/Members/
+Allow: /img/Gallery/
+Allow: /img/Infinity/
+
+# Disallow unnecessary files
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /README.md
+Disallow: /CONTACT_SETUP.md
+Disallow: /email_template.html
+Disallow: /email_template.txt
+Disallow: /SEO_OPTIMIZATION_GUIDE.md
+
+# Crawl delay for better server performance
+Crawl-delay: 1 
