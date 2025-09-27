@@ -1712,6 +1712,82 @@ section {
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
 }
 
+/* Developers Section */
+.developers {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 3rem 0;
+}
+
+.developers .section-header {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.developers-simple {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 4rem;
+}
+
+.developer-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.developer-avatar {
+  position: relative;
+}
+
+.developer-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(0, 212, 255, 0.3);
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.developer-avatar:hover .developer-img {
+  border-color: rgba(0, 212, 255, 0.8);
+  transform: scale(1.05);
+}
+
+.developer-links {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.developer-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00d4ff;
+  text-decoration: none;
+  font-size: 1rem;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 50%;
+  background: rgba(0, 212, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.developer-link:hover {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: rgba(0, 212, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
+  color: white;
+}
+
+
 .contact-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2091,6 +2167,34 @@ h2 {
     gap: 2rem;
   }
 
+  .developers-simple {
+    gap: 2rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .developer-profile {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .developer-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .developer-links {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .developer-link {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+
   .footer-content {
     flex-direction: column;
     text-align: center;
@@ -2277,6 +2381,34 @@ h2 {
 
   .magazine-card {
     padding: 1.5rem;
+  }
+
+  .developers-simple {
+    gap: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .developer-profile {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .developer-img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .developer-links {
+    flex-direction: row;
+    gap: 0.8rem;
+  }
+
+  .developer-link {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
   }
 }
 
